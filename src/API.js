@@ -61,7 +61,7 @@ export default class API {
 			cursor._onChange,
 			value,
 			undefined,
-			cursor._sharedOptions
+			undefined
 		);
 	}
 
