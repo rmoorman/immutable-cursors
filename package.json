@@ -1,7 +1,7 @@
 {
-  "name": "immutable-cursor",
+  "name": "immutable-cursors",
   "version": "0.1.0",
-  "description": "",
+  "description": "Provides cursors for Facebook's ImmutableJS library.",
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src/ --out-dir lib/",
@@ -9,8 +9,15 @@
     "update-dependencies": "npm-check-updates -u && rm -rf node_modules/ && npm install && npm test",
     "test": "babel-node scripts/test.js"
   },
-  "author": "",
-  "license": "ISC",
+  "homepage": "https://github.com/lukasbuenger/immutable-cursors",
+  "bugs": {
+    "url": "https://github.com/lukasbuenger/immutable-cursors/issues"
+  },
+  "author": {
+    "name": "Lukas Bünger",
+    "url": "https://github.com/lukasbuenger"
+  },
+  "license": "BSD-3-Clause and MIT",
   "devDependencies": {
     "babel": "^5.5.6",
     "babel-eslint": "^3.1.15",
@@ -21,5 +28,14 @@
   },
   "dependencies": {
     "immutable": "^3.7.3"
-  }
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "files": [
+    "lib",
+    "src",
+    "README.md",
+    "LICENSE"
+  ]
 }
