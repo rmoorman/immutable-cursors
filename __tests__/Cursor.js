@@ -2,6 +2,9 @@ jest.autoMockOff();
 
 let Immutable = require('immutable');
 let Cursor = require('../src/');
+let API = require('../src/API');
+let KeyedCursor = require('../src/KeyedCursor');
+let pathToSeq = require('../src/pathToSeq/');
 
 jasmine.getEnv().addEqualityTester((a, b) =>
     a instanceof Immutable.Iterable && b instanceof Immutable.Iterable ?
@@ -21,6 +24,23 @@ describe('Cursor', () => {
         let deepCursor = cursor.cursor(['a', 'b']);
         expect(deepCursor.deref().toJS()).toEqual(json.a.b);
         expect(deepCursor.deref()).toBe(data.getIn(['a', 'b']));
+        expect(deepCursor.get('c')).toBe(1);
+
+        let leafCursor = deepCursor.cursor('c');
+        expect(leafCursor.deref()).toBe(1);
+
+        let missCursor = leafCursor.cursor('d');
+        expect(missCursor.deref()).toBe(undefined);
+    });
+
+    it('gets dot notation.', () => {
+        let data = Immutable.fromJS(json);
+        let cursor = Cursor.from(data);
+        expect(cursor.deref()).toBe(data);
+
+        let deepCursor = cursor.cursor('a.b');
+        expect(deepCursor.deref().toJS()).toEqual(json.a.b);
+        expect(deepCursor.deref()).toBe(data.getIn(pathToSeq('a.b')));
         expect(deepCursor.get('c')).toBe(1);
 
         let leafCursor = deepCursor.cursor('c');
@@ -83,7 +103,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a:{b:{c:2}}}),
             data,
-            ['a', 'b', 'c']
+            Immutable.Seq(['a', 'b', 'c'])
         );
 
         let newestDeepCursor = newDeepCursor.update(x => x + 1);
@@ -91,7 +111,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a:{b:{c:3}}}),
             Immutable.fromJS({a:{b:{c:2}}}),
-            ['a', 'b', 'c']
+            Immutable.Seq(['a', 'b', 'c'])
         );
 
         // meanwhile, data is still immutable:
@@ -104,7 +124,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a:{b:{c:11}}}),
             data,
-            ['a', 'b', 'c']
+            Immutable.Seq(['a', 'b', 'c'])
         );
 
         // and update has been called exactly thrice.
@@ -124,7 +144,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a:{b:{c:2}}}),
             data,
-            ['a', 'b', 'c']
+            Immutable.Seq(['a', 'b', 'c'])
         );
 
         onChange.mockReturnValueOnce(Immutable.fromJS({a:{b:{c:11}}}));
@@ -134,7 +154,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a:{b:{c:999}}}),
             Immutable.fromJS({a:{b:{c:2}}}),
-            ['a', 'b', 'c']
+            Immutable.Seq(['a', 'b', 'c'])
         );
 
         // and update has been called exactly twice
@@ -154,7 +174,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({ a: { b: { c: 10 } } }),
             data,
-            ['a', 'b', 'c']
+            Immutable.Seq(['a', 'b', 'c'])
         );
     });
 
@@ -189,7 +209,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a: {b: [0, 1, 2, 3, 4]}}),
             data,
-            ['a', 'b']
+            Immutable.Seq(['a', 'b'])
         );
     });
 
@@ -202,7 +222,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a: {b: [0, 1]}}),
             data,
-            ['a', 'b']
+            Immutable.Seq(['a', 'b'])
         );
     });
 
@@ -215,7 +235,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a: {b: [-2, -1, 0, 1, 2]}}),
             data,
-            ['a', 'b']
+            Immutable.Seq(['a', 'b'])
         );
     });
 
@@ -228,7 +248,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a: {b: [1, 2]}}),
             data,
-            ['a', 'b']
+            Immutable.Seq(['a', 'b'])
         );
     });
 
@@ -244,7 +264,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a: {v: 1}, b: {v: 20}, c: {v: 3}}),
             data,
-            ['b', 'v']
+            Immutable.Seq(['b', 'v'])
         );
     });
 
@@ -259,18 +279,20 @@ describe('Cursor', () => {
     });
 
     it('api returns cursor of custom type when called with.', () => {
-        class Foo extends Cursor.KeyedCursor {
+        class Foo extends KeyedCursor {
         }
         let data = Immutable.fromJS(json);
-        let cursor = Cursor.api.makeCursor(data, [], undefined, undefined, Foo);
+        let api = new API();
+        let cursor = api.makeCursor(data, [], undefined, undefined, Foo);
         expect(cursor instanceof Foo).toBeTruthy();
     });
 
     it('api returns cursor of custom type when updating.', () => {
-        class Foo extends Cursor.KeyedCursor {
+        class Foo extends KeyedCursor {
         }
         let data = Immutable.fromJS(json);
-        let cursor = Cursor.api.makeCursor(data, [], undefined, undefined, Foo);
+        let api = new API();
+        let cursor = api.makeCursor(data, [], undefined, undefined, Foo);
         let cursor2 = cursor.set('a', 'z');
         expect(cursor2 instanceof Foo).toBeTruthy();
     });
@@ -348,7 +370,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a:{b:{c:10}}}),
             data,
-            ['a', 'b', 'c']
+            Immutable.Seq(['a', 'b', 'c'])
         );
     });
 
@@ -361,7 +383,7 @@ describe('Cursor', () => {
         expect(onChange).lastCalledWith(
             Immutable.fromJS({a:{b:{c:10}}}),
             data,
-            ['a', 'b', 'c']
+            Immutable.Seq(['a', 'b', 'c'])
         );
     });
 
