@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src/ --out-dir lib/",
     "update-dependencies": "npm-check-updates -u && rm -rf node_modules/ && npm install && npm test",
-    "test": "jest"
+    "test": "babel-node scripts/test.js"
   },
   "author": "",
   "license": "ISC",
