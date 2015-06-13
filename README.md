@@ -211,8 +211,14 @@ class Input extends React.Component {
 
 	render() {
 		return (
-			<label>{this.props.name}</label>
-			<input type='text' onChange={this.onChange.bind(this)} />
+			<div>
+				<label>{this.props.name}</label>
+				<input
+					type='text'
+					value={this.props.cursor.get(this.props.key)}
+					onChange={this.onChange.bind(this)}
+				/>
+			</div>
 		)
 	}
 }
