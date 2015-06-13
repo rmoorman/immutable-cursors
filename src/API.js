@@ -9,7 +9,7 @@ export default class API {
 
 	cursorFrom(rootData, keyPath, onChange) {
 		keyPath = this.path(keyPath);
-		return this.makeCursor(rootData, keyPath, onChange, undefined);
+		return this.makeCursor(rootData, keyPath, onChange);
 	}
 
 	getCursorClass(value) {
