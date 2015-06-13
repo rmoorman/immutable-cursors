@@ -199,7 +199,7 @@ class Input extends React.Component {
 
 	shouldComponentUpdate(nextProps) {
 		// This is as easy as it gets
-		let shouldChange = this.props.cursor.equals(nextProps.cursor);
+		let shouldChange = !this.props.cursor.equals(nextProps.cursor);
 
 		console.log('\tShould ' + this.props.name + 'update?', shouldChange)
 		return shouldChange;
