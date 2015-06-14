@@ -1,6 +1,6 @@
 {
   "name": "immutable-cursors",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Provides cursors for Facebook's ImmutableJS library.",
   "main": "lib/index.js",
   "scripts": {
