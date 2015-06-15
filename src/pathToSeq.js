@@ -8,12 +8,8 @@ export default function pathToSeq(...paths): Seq {
 			paths[0] :
 			paths.reduce((memo, value) => {
 				return typeof value === 'undefined' ?
-						memo :
-					memo.concat(
-						Iterable.isIterable(value) || Array.isArray(value) ?
-							value :
-							value.split('.')
-					);
+					memo :
+					memo.concat(value);
 			}, new Seq())
 	);
 }
