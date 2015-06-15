@@ -94,6 +94,32 @@ Immutable.is(cursor, valueEqualCursor);
 Immutable.is(valueEqualCursor, data);
 // true
 ```
+
+Use cursors like regular ImmutableJS objects:
+```
+let firstNameOnly = cursor.get('name').take(1);
+firstNameOnly.deref().toJS();
+// {
+//    name: 'Luke'
+// }
+```
+
+If a cursor references a [`Record`](https://facebook.github.io/immutable-js/docs/#/Record) object, all of the Record's properties are present on the cursor as well:
+```javascript
+let Name = Immutable.Record({
+	first: 'Luke',
+	last: 'Skywalker'
+});
+
+let person = Immutable.Map({
+	name: new Name();
+});
+
+let cursor = Cursor.from(person, ['name']);
+cursor.first;
+// 'Luke'
+```
+
 Retrieve a sub-cursor:
 ```javascript
 let nameCursor = cursor.cursor(['name']);
@@ -102,7 +128,7 @@ nameCursor.get('first');
 // 'Luke'
 ```
 
-Methods `get` and `getIn` also return sub-cursors if they don't point at a primitive value:
+Methods `get` and `getIn` also return sub-cursors if they don't point to a primitive value:
 ```javascript
 let nameCursor = cursor.get('name');
 
@@ -121,7 +147,7 @@ let cursor = Cursor.from(data, [], (nextState, currentState) {
 });
 
 cursor.setIn(['name', 'first'], 'Anakin');
-// Luke => Anakin
+// 'Luke => Anakin'
 ```
 
 You can intercept the state propagation by returning a state to perform validation, rollbacks etc.:
