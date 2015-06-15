@@ -25,17 +25,16 @@ The cursors implement the complete API of [`KeyedSeq`](https://facebook.github.i
 
 
 
-### Install
+### Install and setup
 
-The package is available on npm.
+Install the package from npm:
 
 ```
 npm install immutable-cursors
 ```
 
-### Basic operations
+Import the module and provide some state:
 
-Import and provide some fixtures first:
 ```javascript
 import Immutable from 'immutable';
 import Cursor from 'immutable-cursors';
@@ -49,6 +48,7 @@ let data = Immutable.fromJS({
 });
 ```
 
+### Basic operations
 
 Retrieve an initial cursor like this:
 ```javascript
@@ -83,6 +83,15 @@ modifiedAgeCursor.get('age');
 // 45
 ```
 
+Use cursors like regular ImmutableJS objects:
+```
+let firstNameOnly = cursor.get('name').take(1);
+firstNameOnly.deref().toJS();
+// {
+//    name: 'Luke'
+// }
+```
+
 Cursors support value equality (see [Immutable.is](https://facebook.github.io/immutable-js/docs/#/is)). This is especially helpful in situations where you want to compare current to new nested state or props in React components, most prominently in `shouldComponentUpdate`:
 ```javascript
 let valueEqualCursor = Cursor.from(data);
@@ -93,15 +102,6 @@ Immutable.is(cursor, valueEqualCursor);
 // true
 Immutable.is(valueEqualCursor, data);
 // true
-```
-
-Use cursors like regular ImmutableJS objects:
-```
-let firstNameOnly = cursor.get('name').take(1);
-firstNameOnly.deref().toJS();
-// {
-//    name: 'Luke'
-// }
 ```
 
 If a cursor references a [`Record`](https://facebook.github.io/immutable-js/docs/#/Record) object, all of the Record's properties are present on the cursor as well:
@@ -120,6 +120,8 @@ cursor.first;
 // 'Luke'
 ```
 
+### Nested cursors
+
 Retrieve a sub-cursor:
 ```javascript
 let nameCursor = cursor.cursor(['name']);
@@ -136,9 +138,11 @@ nameCursor.get('last');
 // 'Skywalker'
 ```
 
+### Handle change
+
 Cursors and their sub-cursors share a common root state and a change handler that gets called, whenever modifications on the cursor tree occur.
 
-Handle state change:
+Add a change handler to the initial `Cursor.from` call:
 ```javascript
 let cursor = Cursor.from(data, [], (nextState, currentState) {
 	let newFirstName = nextState.getIn(['name', 'first']);
@@ -150,7 +154,7 @@ cursor.setIn(['name', 'first'], 'Anakin');
 // 'Luke => Anakin'
 ```
 
-You can intercept the state propagation by returning a state to perform validation, rollbacks etc.:
+You can intercept the state propagation by returning a state in your change handler to perform validation, rollbacks etc.:
 ```javascript
 let cursor = Cursor.from(data, ['name'], (nextState, currentState) {
 	if (nextState.get('first') === 'Leia') {
@@ -171,33 +175,33 @@ leiaCursor.get('last');
 
 ### API
 
-#### Cursor.from(*state [, keyPath, changeHandler ]*)
+#### `Cursor.from(state [, keyPath, changeHandler ])`
 
 Returns a new cursor.
 
 ###### Arguments
 
-* `state`: An ImmutableJS object
-* `keyPath`: A key path to the nested state the cursor should point to.
-* `changeHandler`: Called whenever the state was modified. Receives the following arguments:
-	* `nextState`: The next state.
-	* `currentState`: The current state.
-	* `keyPath`: An Immutable.Seq pointing at the nested state where the change occurred.
+* `state` - An ImmutableJS object
+* `keyPath` - A key path to the nested state the cursor should point to.
+* `changeHandler` - Called whenever the state was modified. Receives the following arguments:
+	* `nextState` - The next state.
+	* `currentState` - The current state.
+	* `keyPath` - An Immutable.Seq pointing at the nested state where the change occurred.
 
 ### Cursor methods
 
 Cursors implement all of the methods of [`KeyedSeq`](https://facebook.github.io/immutable-js/docs/#/KeyedSeq) and
 [`IndexedSeq`](https://facebook.github.io/immutable-js/docs/#/IndexedSeq). In addition to these, they ship with the following methods:
 
-#### cursor(*keyPath*)
+#### `cursor(keyPath)`
 
 Returns a sub-cursor.
 
 ###### Arguments
 
-* `keyPath`: A key path to the nested state the cursor should point to.
+* `keyPath` - A key path to the nested state the cursor should point to.
 
-#### deref()
+#### `deref()`
 
 Returns the ImmutableJS object that is backing the cursor. Alias: `valueOf`
 
@@ -313,7 +317,7 @@ npm run update-dependencies
 
 - [ ] Improve docs. Complete API docs and extension guide
 - [ ] Better test coverage
-- [ ] Annotate source and add [Flow](http://flowtype.org) types as soon as Flow is fully ES6 compliant. 
+- [ ] Annotate source [Flow](http://flowtype)
 
 ## License
 
