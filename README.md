@@ -205,7 +205,7 @@ Returns the ImmutableJS object that is backing the cursor. Alias: `valueOf`
 
 ## Simplistic React example
 
-Note that in a production environment you hardly want to modify cursors in your components directly. We do that here for the sake of simplicy.
+Note that in a production environment you hardly want to modify cursors in your components directly. We do that here for the sake of simplicity.
 
 ```javascript
 import React from 'react';
@@ -313,6 +313,7 @@ npm run update-dependencies
 
 - [ ] Improve docs. Complete API docs and extension guide
 - [ ] Better test coverage
+- [ ] Annotate source and add [Flow](http://flowtype.org) types as soon as Flow is fully ES6 compliant. 
 
 ## License
 
