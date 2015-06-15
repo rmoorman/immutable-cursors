@@ -305,9 +305,12 @@ Update all local dependencies:
 npm run update-dependencies
 ```
 
+## Changelog
+
+- **0.1.2** - Support [`Record`](https://facebook.github.io/immutable-js/docs/#/Record) properties.
+
 ## Roadmap
 
-- [ ] Port Record properties support. ([Commit](https://github.com/facebook/immutable-js/commit/3389a756616c132fbff7476359ebf9ea7f1d0ff6))
 - [ ] Improve docs. Complete API docs and extension guide
 - [ ] Better test coverage
 
