@@ -352,4 +352,13 @@ describe('Cursor', () => {
         );
     });
 
+
+    it('can get Record value as a property', () => {
+        var User = new Immutable.Record({ name: 'John' });
+        var users = Immutable.List.of(new User());
+        var data = new Immutable.Map({'users': users});
+        var cursor = Cursor.from(data, ['users']);
+        expect(cursor.first().name).toBe('John');
+    });
+
 });

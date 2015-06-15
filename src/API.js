@@ -1,4 +1,4 @@
-import { Iterable, Map } from 'immutable';
+import { Iterable, Map, Record } from 'immutable';
 import IndexedCursor from './IndexedCursor';
 import KeyedCursor from './KeyedCursor';
 import pathToSeq from './pathToSeq';
@@ -23,7 +23,13 @@ export default class API {
 		}
 		let size = value && value.size;
 		CursorClass = CursorClass || this.getCursorClass(value);
-		return new CursorClass(rootData, keyPath, onChange, size, this, sharedOptions);
+		let cursor = new CursorClass(rootData, keyPath, onChange, size, this, sharedOptions);
+
+		if (value instanceof Record) {
+			this.defineRecordProperties(cursor, value);
+		}
+
+		return cursor;
 	}
 
 	updateCursor(cursor, changeFn, changeKeyPath) {
@@ -63,6 +69,23 @@ export default class API {
 			undefined,
 			undefined
 		);
+	}
+
+	defineRecordProperties(cursor, value) {
+		value._keys.forEach(this.setProp.bind(undefined, cursor));
+	}
+
+	setProp(prototype, name) {
+		Object.defineProperty(prototype, name, {
+			get: function() {
+				return this.get(name);
+			},
+			set: function() {
+				if (!this.__ownerID) {
+					throw new Error('Cannot set on an immutable record.');
+				}
+			}
+		});
 	}
 
 	path(...paths) {
