@@ -37,23 +37,6 @@ describe('Cursor', () => {
         expect(missCursor.deref()).toBe(undefined);
     });
 
-    it('gets dot notation.', () => {
-        let data = Immutable.fromJS(json);
-        let cursor = Cursor.from(data);
-        expect(cursor.deref()).toBe(data);
-
-        let deepCursor = cursor.cursor('a.b');
-        expect(deepCursor.deref().toJS()).toEqual(json.a.b);
-        expect(deepCursor.deref()).toBe(data.getIn(pathToSeq('a.b')));
-        expect(deepCursor.get('c')).toBe(1);
-
-        let leafCursor = deepCursor.cursor('c');
-        expect(leafCursor.deref()).toBe(1);
-
-        let missCursor = leafCursor.cursor('d');
-        expect(missCursor.deref()).toBe(undefined);
-    });
-
     it('gets return new cursors', () => {
         let data = Immutable.fromJS(json);
         let cursor = Cursor.from(data);
