@@ -321,4 +321,4 @@ npm run update-dependencies
 
 ## License
 
-It's comlicated. See [LICENSE](LICENSE) file.
+It's complicated. See [LICENSE](LICENSE) file.
