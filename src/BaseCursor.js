@@ -4,6 +4,13 @@ let Iterator = Iterable.Iterator;
 
 export default {
 
+	size: undefined,
+	_rootData: undefined,
+	_keyPath: undefined,
+	_onChange: undefined,
+	_api: undefined,
+	sharedOptions: undefined,
+
 	deref(notSetValue = undefined) {
 		return this._rootData.getIn(this._keyPath, notSetValue);
 	},
