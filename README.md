@@ -144,7 +144,7 @@ Cursors and their sub-cursors share a common root state and a change handler tha
 
 Add a change handler to the initial `Cursor.from` call:
 ```javascript
-let cursor = Cursor.from(data, [], (nextState, currentState) {
+let cursor = Cursor.from(data, [], (nextState, currentState) => {
 	let newFirstName = nextState.getIn(['name', 'first']);
 	let currentFirstName = currentState.getIn(['name', 'first']);
 	console.log(currentFirstName + ' => ' + newFirstName);
@@ -156,7 +156,7 @@ cursor.setIn(['name', 'first'], 'Anakin');
 
 You can intercept the state propagation by returning a state in your change handler to perform validation, rollbacks etc.:
 ```javascript
-let cursor = Cursor.from(data, ['name'], (nextState, currentState) {
+let cursor = Cursor.from(data, ['name'], (nextState, currentState) => {
 	if (nextState.get('first') === 'Leia') {
 		return nextState.set('last', 'Organa');
 	}
