@@ -10,8 +10,8 @@
     "test": "babel-node scripts/test.js"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/lukasbuenger/immutable-cursors.git"
+    "type": "git",
+    "url": "https://github.com/lukasbuenger/immutable-cursors.git"
   },
   "homepage": "https://github.com/lukasbuenger/immutable-cursors",
   "bugs": {
@@ -23,15 +23,17 @@
   },
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
-    "babel": "^5.5.8",
-    "babel-eslint": "^3.1.15",
+    "acorn": "^2.0.4",
+    "babel": "^5.6.1",
+    "babel-eslint": "^3.1.17",
     "eslint": "^0.23.0",
     "jasmine": "^2.3.1",
     "jasmine-spec-reporter": "^2.2.3",
+    "mustache": "^2.1.2",
     "npm-check-updates": "^1.5.1"
   },
   "dependencies": {
-    "immutable": "^3.7.3"
+    "immutable": "^3.7.4"
   },
   "engines": {
     "node": ">=0.8.0"
