@@ -27,6 +27,7 @@
     "babel": "^5.6.1",
     "babel-eslint": "^3.1.17",
     "eslint": "^0.23.0",
+    "glob": "^5.0.10",
     "jasmine": "^2.3.1",
     "jasmine-spec-reporter": "^2.2.3",
     "mustache": "^2.1.2",
