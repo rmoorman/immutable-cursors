@@ -136,12 +136,10 @@ glob('src/*.js', {}, (er, fileNames) => {
 			});
 
 		Object.keys(linkPatterns).forEach(key => {
-			console.log(key);
 			rendered = rendered.replace(new RegExp('\>\\b' + key + '\\b', 'g'), linkPatterns[key]);
 		});
 
 		Object.keys(refPatterns).forEach(key => {
-			console.log(key);
 			rendered = rendered.replace(new RegExp('\>\\b' + key + '\\b', 'g'), refPatterns[key]);
 		});
 
