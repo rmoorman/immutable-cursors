@@ -896,7 +896,7 @@ An Immutable.Seq path
 
 ## Changelog
 
-- **0.1.3** - API docs added.
+- **0.1.3** - API docs added. Fixed license referenceing 
 - **0.1.2** - Support [Record](http://facebook.github.io/immutable-js/docs/#/Record) properties.
 
 ## Roadmap
