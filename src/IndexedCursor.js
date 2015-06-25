@@ -2,6 +2,40 @@ import { Seq } from 'immutable';
 import BaseCursor from './BaseCursor';
 import mixed from './extendMixed.js';
 
+/**
+ * @id IndexedCursor
+ * @lookup IndexedCursor
+ *
+ * ### *class* IndexedCursor
+ *
+ * <sub>Extends >IndexedSeq</sub>
+ * <sub>Mixins >BaseCursor</sub>
+ *
+ * Used to represent indexed >ImmutableJS values.
+ *
+ * ###### Signature:
+ * ```js
+ * new IndexedCursor(
+ *    rootData: immutable.Iterable,
+ *    keyPath: Immutable.Seq,
+ *    onChange?: Function,
+ *    size?: number,
+ *    api: API,
+ *    sharedOptions?: Object
+ * )
+ * ```
+ *
+ * ###### Arguments:
+ * * `rootData` - An >ImmutableJS state.
+ * * `keyPath` - A key path to a nested value.
+ * * `onChange` - A change handler.
+ * * `size` -  A value that should be set as the size of the cursor. Default: `rootData.getIn(keyPath)`.
+ * * `api` - A reference to the >API object from which the cursor was derived.
+ * * `sharedOptions` - Pass additional shared options.
+ *
+ * ###### Returns:
+ * * A new cursor
+ */
 export default class IndexedCursor extends mixed(Seq.Indexed, BaseCursor) {
 
 	constructor(rootData, keyPath, onChange, size, api, sharedOptions) {

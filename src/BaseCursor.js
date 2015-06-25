@@ -2,6 +2,22 @@ import { Iterable, Map } from 'immutable';
 
 let Iterator = Iterable.Iterator;
 
+/**
+ * ## *mixin* BaseCursor
+ *
+ * The BaseCursor mixin contains methods that represent shared behavior of
+ * both >KeyedCursor and >IndexedCursor. The reason why these live in a mixin is,
+ * that prototypical inheritance on the cursor classes is already occupied by the
+ * ImmutableJS base classes KeyedSeq and IndexedSeq respectively.
+ *
+ * Most of the methods in this mixin override these original Immutable.Seq interface, where
+ * cursor implementation has to decorate / circumvent default ImmutableJS behavior.
+ *
+ *
+ * If your are interested in how these overrides work, check out the source. This
+ * document only lists the methods that are not part of the original ImmutableJS.Seq
+ * interface.
+ */
 export default {
 
 	size: undefined,
@@ -9,12 +25,35 @@ export default {
 	_keyPath: undefined,
 	_onChange: undefined,
 	_api: undefined,
-	sharedOptions: undefined,
+	_sharedOptions: undefined,
 
-	deref(notSetValue = undefined) {
+	/**
+	 * #### deref()
+	 *
+	 * Returns the ImmutableJS object that is backing the cursor.
+	 *
+	 * ###### Signature:
+	 * ```js
+	 * deref(
+	 *    notSetValue?: any
+	 * ): Immutable.Iterable
+	 * ```
+	 *
+	 * ###### Arguments:
+	 * * `notSetValue` - You'll get `notSetValue` returned if there is no backing value for this cursor.
+	 *
+	 * ###### Returns:
+	 * The ImmutableJS backing state of this cursor.
+	 */
+	deref(notSetValue) {
 		return this._rootData.getIn(this._keyPath, notSetValue);
 	},
 
+	/**
+	 * #### valueOf()
+	 *
+	 * Alias of deref().
+	 */
 	valueOf(notSetValue = undefined) {
 		return this.deref(notSetValue);
 	},
