@@ -876,7 +876,7 @@ new IndexedCursor(
 ## *function* pathToSeq()
 
 Normalizes and concatenates any passed key paths and returns a single
-Immutable.Seq object.
+[Seq](http://facebook.github.io/immutable-js/docs/#/Seq) object.
 
 ###### Signature:
 ```js
@@ -886,10 +886,10 @@ pathToSeq(
 ```
 
 ###### Arguments:
-* `...paths` -  Any values that you want to merge to a Immutable.Seq path
+* `...paths` -  Any values that you want to merge to a [Seq](http://facebook.github.io/immutable-js/docs/#/Seq) path
 
 ###### Returns:
-An Immutable.Seq path
+An [Seq](http://facebook.github.io/immutable-js/docs/#/Seq) path
  
 
 

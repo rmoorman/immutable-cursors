@@ -7,7 +7,7 @@ import { Seq, Iterable } from 'immutable';
  * ## *function* pathToSeq()
  *
  * Normalizes and concatenates any passed key paths and returns a single
- * Immutable.Seq object.
+ * >Immutable.Seq object.
  *
  * ###### Signature:
  * ```js
@@ -17,10 +17,10 @@ import { Seq, Iterable } from 'immutable';
  * ```
  *
  * ###### Arguments:
- * * `...paths` -  Any values that you want to merge to a Immutable.Seq path
+ * * `...paths` -  Any values that you want to merge to a >Immutable.Seq path
  *
  * ###### Returns:
- * An Immutable.Seq path
+ * An >Immutable.Seq path
  */
 export default function pathToSeq(...paths) {
 	return (
