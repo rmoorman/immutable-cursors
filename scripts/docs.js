@@ -143,6 +143,6 @@ glob('src/*.js', {}, (er, fileNames) => {
 			rendered = rendered.replace(new RegExp('\>\\b' + key + '\\b', 'g'), refPatterns[key]);
 		});
 
-		fs.writeFileSync('DOCS.md', rendered);
+		fs.writeFileSync('README.md', rendered);
 	}
 });
