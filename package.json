@@ -7,7 +7,8 @@
     "build": "babel src/ --out-dir lib/",
     "lint": "eslint src/ && eslint tests/",
     "update-dependencies": "npm-check-updates -u && rm -rf node_modules/ && npm install && npm test",
-    "test": "babel-node scripts/test.js"
+    "test": "babel-node scripts/test.js",
+    "docs": "babel-node scripts/docs.js"
   },
   "repository": {
     "type": "git",
@@ -24,8 +25,8 @@
   "license": "SEE LICENSE IN LICENSE",
   "devDependencies": {
     "acorn": "^2.0.4",
-    "babel": "^5.6.1",
-    "babel-eslint": "^3.1.17",
+    "babel": "^5.6.7",
+    "babel-eslint": "^3.1.18",
     "eslint": "^0.23.0",
     "glob": "^5.0.10",
     "jasmine": "^2.3.1",
