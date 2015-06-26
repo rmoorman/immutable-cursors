@@ -3,6 +3,9 @@ import { Iterable, Map } from 'immutable';
 let Iterator = Iterable.Iterator;
 
 /**
+ * @id BaseCursor
+ * @lookup BaseCursor
+ *
  * ## *mixin* BaseCursor
  *
  * The BaseCursor mixin contains methods that represent shared behavior of
