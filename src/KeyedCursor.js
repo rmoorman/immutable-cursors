@@ -9,6 +9,7 @@ import mixed from './extendMixed.js';
  * ### *class* KeyedCursor
  *
  * <sub>**Extends:** >KeyedSeq</sub>
+ * 
  * <sub>**Mixins:** >BaseCursor</sub>
  *
  * Used to represent keyed >ImmutableJS values.

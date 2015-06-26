@@ -8,8 +8,9 @@ import mixed from './extendMixed.js';
  *
  * ### *class* IndexedCursor
  *
- * <sub>Extends >IndexedSeq</sub>
- * <sub>Mixins >BaseCursor</sub>
+ * <sub>**Extends:** >IndexedSeq</sub>
+ *
+ * <sub>**Mixins:** >BaseCursor</sub>
  *
  * Used to represent indexed >ImmutableJS values.
  *

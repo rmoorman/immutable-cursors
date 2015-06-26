@@ -802,8 +802,9 @@ A new root cursor
 
 ### *class* IndexedCursor
 
-<sub>Extends [IndexedSeq](http://facebook.github.io/immutable-js/docs/#/IndexedSeq)</sub>
-<sub>Mixins [BaseCursor](#BaseCursor)</sub>
+<sub>**Extends:** [IndexedSeq](http://facebook.github.io/immutable-js/docs/#/IndexedSeq)</sub>
+
+<sub>**Mixins:** [BaseCursor](#BaseCursor)</sub>
 
 Used to represent indexed [ImmutableJS](http://facebook.github.io/immutable-js/) values.
 
@@ -841,6 +842,7 @@ new IndexedCursor(
 ### *class* KeyedCursor
 
 <sub>**Extends:** [KeyedSeq](http://facebook.github.io/immutable-js/docs/#/KeyedSeq)</sub>
+
 <sub>**Mixins:** [BaseCursor](#BaseCursor)</sub>
 
 Used to represent keyed [ImmutableJS](http://facebook.github.io/immutable-js/) values.
