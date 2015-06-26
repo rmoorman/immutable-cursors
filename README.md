@@ -358,7 +358,7 @@ cursorFrom(
 
 #### getCursorClass()
 
-Decides on and returns a cursor class by analyzing `value`. Returns [IndexedCursor](#IndexedCursor) if `Iterable.isIndexed(value) === true`, [KeyedCursor](#KeyedCursor).
+Decides on and returns a cursor class by analyzing `value`. Returns [IndexedCursor](#IndexedCursor) if `Iterable.isIndexed(value) === true`, else [KeyedCursor](#KeyedCursor).
 
 ###### Signature:
 ```js
@@ -658,7 +658,7 @@ let cursor = Cursor.from(state);
 
 ###### Signature:
 ```js
-path(): Object
+export(): Object
 ```
 
 ###### Returns:

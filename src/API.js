@@ -82,7 +82,7 @@ export default class API {
 	 *
 	 * #### getCursorClass()
 	 *
-	 * Decides on and returns a cursor class by analyzing `value`. Returns >IndexedCursor if `Iterable.isIndexed(value) === true`, >KeyedCursor.
+	 * Decides on and returns a cursor class by analyzing `value`. Returns >IndexedCursor if `Iterable.isIndexed(value) === true`, else >KeyedCursor.
 	 *
 	 * ###### Signature:
 	 * ```js
@@ -443,7 +443,7 @@ export default class API {
 	 *
 	 * ###### Signature:
 	 * ```js
-	 * path(): Object
+	 * export(): Object
 	 * ```
 	 *
 	 * ###### Returns:
