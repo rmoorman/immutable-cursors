@@ -33,7 +33,7 @@ export default {
 	/**
 	 * #### deref()
 	 *
-	 * Returns the ImmutableJS object that is backing the cursor.
+	 * Returns the >ImmutableJS object that is backing the cursor.
 	 *
 	 * ###### Signature:
 	 * ```js
@@ -74,10 +74,34 @@ export default {
 		return value === this._api.NOT_SET ? notSetValue : this._api.wrappedValue(this, keyPath, value);
 	},
 
+	/**
+	 * #### set()
+	 *
+	 * If called with a `key` and a `value`, the substate at `key` will be set to `value`. If you only provide one argument, the backing state of the cursor itself is set directly to the given argument. This makes this method a little different from the one found on >Immutable.Iterable.
+	 *
+	 * ###### Signature:
+	 * ```js
+	 * set(
+	 *    key: Array|Immutable.Seq|any,
+	 *    value?: any
+	 * ): KeyedCursor|IndexedCursor
+	 * ```
+	 *
+	 * ###### Arguments:
+	 * * `key` - Either a key path to the substate you want to modify or a value you want to set directly.
+	 * * `value` - A value.
+	 *
+	 * ###### Returns:
+	 * The cursor representing the new state.
+	 */
 	set(key, value) {
-		return this._api.updateCursor(this, (m) => {
-			return m.set(key, value);
-		}, this._api.path(key));
+		if(arguments.length === 1) {
+			return this._api.updateCursor(this, () => key, this._api.path());
+		} else {
+			return this._api.updateCursor(this, (m) => {
+				return m.set(key, value);
+			}, this._api.path(key));
+		}
 	},
 
 	setIn(keyPath, value) {

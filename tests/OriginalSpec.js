@@ -1,6 +1,5 @@
 import Immutable from 'immutable';
 import Cursor from '../src/';
-import pathToSeq from '../src/pathToSeq';
 
 function immutableEqual(a, b) {
     return a instanceof Immutable.Iterable && b instanceof Immutable.Iterable ?
@@ -361,4 +360,30 @@ describe('Cursor', () => {
         expect(cursor.first().name).toBe('John');
     });
 
+
+    it('can set value of a cursor directly', () => {
+        var onChange = mock('onChange');
+        var data = Immutable.fromJS({a: 1});
+        var c = Cursor.from(data, ['a'], onChange);
+        var c1 = c.set(2);
+        expect(c1.deref()).toBe(2);
+        expect(onChange).toHaveBeenCalledWith(
+            Immutable.fromJS({a: 2}),
+            data,
+            new Immutable.Seq(['a'])
+        );
+    });
+
+    it('can set value of a cursor to undefined directly', () => {
+        var onChange = mock('onChange');
+        var data = Immutable.fromJS({a: 1});
+        var c = Cursor.from(data, ['a'], onChange);
+        var c1 = c.set(undefined);
+        expect(c1.deref()).toBe(undefined);
+        expect(onChange).toHaveBeenCalledWith(
+            Immutable.fromJS({a: undefined}),
+            data,
+            new Immutable.Seq(['a'])
+        );
+    });
 });

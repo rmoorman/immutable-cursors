@@ -1,7 +1,7 @@
 Immutable Cursors
 =================
 
-0.1.3
+0.1.4
 
 This CommonJS module provides cursors for Facebook's [ImmutableJS](http://facebook.github.io/immutable-js/) library. It is
 essentially a standalone fork of the excellent
@@ -283,7 +283,7 @@ npm run update-dependencies
 ## Docs
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.3/src/API.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.4/src/API.js)</sub>
 - - - 
 <a id="API"></a>
 
@@ -666,7 +666,7 @@ The client API
 	 
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.3/src/BaseCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.4/src/BaseCursor.js)</sub>
 - - - 
 <a id="BaseCursor"></a>
 
@@ -692,7 +692,7 @@ interface.
 
 #### deref()
 
-Returns the ImmutableJS object that is backing the cursor.
+Returns the [ImmutableJS](http://facebook.github.io/immutable-js/) object that is backing the cursor.
 
 ###### Signature:
 ```js
@@ -716,7 +716,29 @@ Alias of deref().
 	 
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.3/src/extendMixed.js)</sub>
+
+#### set()
+
+If called with a `key` and a `value`, the substate at `key` will be set to `value`. If you only provide one argument, the backing state of the cursor itself is set directly to the given argument. This makes this method a little different from the one found on [Iterable](http://facebook.github.io/immutable-js/docs/#/Iterable).
+
+###### Signature:
+```js
+set(
+   key: Array|Immutable.Seq|any,
+   value?: any
+): KeyedCursor|IndexedCursor
+```
+
+###### Arguments:
+* `key` - Either a key path to the substate you want to modify or a value you want to set directly.
+* `value` - A value.
+
+###### Returns:
+The cursor representing the new state.
+	 
+
+- - - 
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.4/src/extendMixed.js)</sub>
 - - - 
 <a id="extendMixed"></a>
 
@@ -752,7 +774,7 @@ A copy of the parent class with all mixin extensions.
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.3/src/index.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.4/src/index.js)</sub>
 - - - 
 
 
@@ -794,7 +816,7 @@ A new root cursor
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.3/src/IndexedCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.4/src/IndexedCursor.js)</sub>
 - - - 
 <a id="IndexedCursor"></a>
 
@@ -832,7 +854,7 @@ new IndexedCursor(
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.3/src/KeyedCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.4/src/KeyedCursor.js)</sub>
 - - - 
 <a id="KeyedCursor"></a>
 
@@ -870,7 +892,7 @@ new IndexedCursor(
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.3/src/pathToSeq.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.4/src/pathToSeq.js)</sub>
 - - - 
 <a id="pathToSeq"></a>
 
@@ -899,6 +921,7 @@ An [Seq](http://facebook.github.io/immutable-js/docs/#/Seq) path
 
 ## Changelog
 
+- **0.1.4** - In order to keep up with [contrib/cursor](https://github.com/facebook/immutable-js/tree/master/contrib/cursor) ([see commit here](https://github.com/facebook/immutable-js/commit/22baae69cdacf4b6cf43918d3a97ea1575ed67fb)), you can now set a cursor value directly. All dependencies updated.
 - **0.1.3** - API docs added. Fixed license referencing in package.json courtesy of [kemitchell](https://github.com/kemitchell).
 - **0.1.2** - Support [Record](http://facebook.github.io/immutable-js/docs/#/Record) properties.
 
