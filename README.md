@@ -1,7 +1,7 @@
 Immutable Cursors
 =================
 
-0.1.6
+0.1.7
 
 This CommonJS module provides cursors for Facebook's [ImmutableJS](http://facebook.github.io/immutable-js/) library. It is
 essentially a standalone fork of the excellent
@@ -283,7 +283,7 @@ npm run update-dependencies
 ## Docs
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.6/src/API.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/API.js)</sub>
 - - - 
 <a id="API"></a>
 
@@ -666,7 +666,7 @@ The client API
 	 
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.6/src/BaseCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/BaseCursor.js)</sub>
 - - - 
 <a id="BaseCursor"></a>
 
@@ -738,7 +738,7 @@ The cursor representing the new state.
 	 
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.6/src/extendMixed.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/extendMixed.js)</sub>
 - - - 
 <a id="extendMixed"></a>
 
@@ -774,7 +774,7 @@ A copy of the parent class with all mixin extensions.
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.6/src/index.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/index.js)</sub>
 - - - 
 
 
@@ -816,7 +816,7 @@ A new root cursor
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.6/src/IndexedCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/IndexedCursor.js)</sub>
 - - - 
 <a id="IndexedCursor"></a>
 
@@ -854,7 +854,7 @@ new IndexedCursor(
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.6/src/KeyedCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/KeyedCursor.js)</sub>
 - - - 
 <a id="KeyedCursor"></a>
 
@@ -892,7 +892,7 @@ new IndexedCursor(
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.6/src/pathToSeq.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/pathToSeq.js)</sub>
 - - - 
 <a id="pathToSeq"></a>
 
@@ -921,7 +921,8 @@ An [Seq](http://facebook.github.io/immutable-js/docs/#/Seq) path
 
 ## Changelog
 
-- **0.1.6** - Dependencies updated. Built against latest Babel version. 
+- **0.1.7** - Dependencies updated. Built against latest Babel version. 
+- **0.1.6** - Dependencies updated. Built against latest Babel version.
 - **0.1.5** - Forgot to add transpiled files from 0.1.4. Big facepalm!
 - **0.1.4** - In order to keep up with [contrib/cursor](https://github.com/facebook/immutable-js/tree/master/contrib/cursor) ([see commit here](https://github.com/facebook/immutable-js/commit/22baae69cdacf4b6cf43918d3a97ea1575ed67fb)), you can now set a cursor value directly. All dependencies updated.
 - **0.1.3** - API docs added. Fixed license referencing in package.json courtesy of [kemitchell](https://github.com/kemitchell).
