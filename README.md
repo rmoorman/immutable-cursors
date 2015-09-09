@@ -1,7 +1,7 @@
 Immutable Cursors
 =================
 
-0.1.7
+0.1.8
 
 This CommonJS module provides cursors for Facebook's [ImmutableJS](http://facebook.github.io/immutable-js/) library. It is
 essentially a standalone fork of the excellent
@@ -283,7 +283,7 @@ npm run update-dependencies
 ## Docs
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/API.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.8/src/API.js)</sub>
 - - - 
 <a id="API"></a>
 
@@ -666,7 +666,7 @@ The client API
 	 
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/BaseCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.8/src/BaseCursor.js)</sub>
 - - - 
 <a id="BaseCursor"></a>
 
@@ -738,7 +738,7 @@ The cursor representing the new state.
 	 
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/extendMixed.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.8/src/extendMixed.js)</sub>
 - - - 
 <a id="extendMixed"></a>
 
@@ -774,7 +774,7 @@ A copy of the parent class with all mixin extensions.
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/index.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.8/src/index.js)</sub>
 - - - 
 
 
@@ -816,7 +816,7 @@ A new root cursor
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/IndexedCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.8/src/IndexedCursor.js)</sub>
 - - - 
 <a id="IndexedCursor"></a>
 
@@ -854,7 +854,7 @@ new IndexedCursor(
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/KeyedCursor.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.8/src/KeyedCursor.js)</sub>
 - - - 
 <a id="KeyedCursor"></a>
 
@@ -892,7 +892,7 @@ new IndexedCursor(
  
 
 - - - 
-<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.7/src/pathToSeq.js)</sub>
+<sub>[See Source](https://github.com/lukasbuenger/immutable-cursors/tree/v0.1.8/src/pathToSeq.js)</sub>
 - - - 
 <a id="pathToSeq"></a>
 
