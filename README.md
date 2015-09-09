@@ -921,7 +921,8 @@ An [Seq](http://facebook.github.io/immutable-js/docs/#/Seq) path
 
 ## Changelog
 
-- **0.1.7** - Dependencies updated. Built against latest Babel version. 
+- **0.1.8** - Dependencies updated, especially ImmutableJS. Built against latest Babel version. 
+- **0.1.7** - Dependencies updated. Built against latest Babel version.
 - **0.1.6** - Dependencies updated. Built against latest Babel version.
 - **0.1.5** - Forgot to add transpiled files from 0.1.4. Big facepalm!
 - **0.1.4** - In order to keep up with [contrib/cursor](https://github.com/facebook/immutable-js/tree/master/contrib/cursor) ([see commit here](https://github.com/facebook/immutable-js/commit/22baae69cdacf4b6cf43918d3a97ea1575ed67fb)), you can now set a cursor value directly. All dependencies updated.
